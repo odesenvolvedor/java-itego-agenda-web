@@ -1,4 +1,4 @@
-package br.com.javaweb.jdbc.modelo;
+package br.com.agenda.jdbc.modelo;
 
 import java.util.Calendar;
 

@@ -1,9 +1,10 @@
-package br.com.javaweb.jdbc.test;
+package br.com.agenda.jdbc.test;
 
-import br.com.javaweb.jdbc.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import br.com.agenda.jdbc.ConnectionFactory;
 
 public class TestaInserePrimeiro {
 

@@ -1,9 +1,10 @@
-package br.com.javaweb.jdbc.test;
+package br.com.agenda.jdbc.test;
 
-import br.com.javaweb.jdbc.dao.ContatoDao;
-import br.com.javaweb.jdbc.modelo.Contato;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import br.com.agenda.jdbc.dao.ContatoDao;
+import br.com.agenda.jdbc.modelo.Contato;
 
 public class TestaAltera {
 

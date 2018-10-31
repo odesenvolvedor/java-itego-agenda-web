@@ -1,7 +1,5 @@
-package br.com.javaweb.jdbc.dao;
+package br.com.agenda.jdbc.dao;
 
-import br.com.javaweb.jdbc.ConnectionFactory;
-import br.com.javaweb.jdbc.modelo.Contato;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -10,6 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import br.com.agenda.jdbc.ConnectionFactory;
+import br.com.agenda.jdbc.modelo.Contato;
 
 public class ContatoDao {
 

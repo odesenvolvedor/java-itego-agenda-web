@@ -1,6 +1,6 @@
-package br.com.javaweb.jdbc.test;
+package br.com.agenda.jdbc.test;
 
-import br.com.javaweb.jdbc.ConnectionFactory;
+import br.com.agenda.jdbc.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.SQLException;
 
