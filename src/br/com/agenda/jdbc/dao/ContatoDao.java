@@ -93,9 +93,11 @@ public class ContatoDao {
 
                 // adicionando o objeto à lista
                 contatos.add(contato);
+                System.out.println(contato.getNome());
             }
             rs.close();
-            stmt.close();
+            stmt.close();         
+            
             return contatos;
 
         } catch (SQLException e) {
