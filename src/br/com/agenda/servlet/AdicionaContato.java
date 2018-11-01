@@ -80,7 +80,9 @@ public class AdicionaContato extends HttpServlet {
 		
 		//	fazendo	a conversão da data
 		try	{
-			Date date 		= new	SimpleDateFormat("yyyy-MM-dd").parse(dataEmTexto);
+			Date date 		
+				= new	SimpleDateFormat("yyyy-MM-dd")
+					.parse(dataEmTexto);
 			System.out.println(date);
 			dataNascimento 	= Calendar.getInstance();
 			
