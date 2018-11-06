@@ -84,29 +84,26 @@ public class AdicionaContato extends HttpServlet {
 				= new	SimpleDateFormat("yyyy-MM-dd")
 					.parse(dataEmTexto);
 			System.out.println(date);
-			dataNascimento 	= Calendar.getInstance();
-			
-			dataNascimento.setTime(date);
-			
+			dataNascimento 	= Calendar.getInstance();			
+			dataNascimento.setTime(date);			
 		} catch	(ParseException	e)	{
 			out.println("Erro de conversão da data");
-			return;	//para a execução do	método
-		}
-		
-		//monta	um	objeto	contato
+			return;	//para a execução do método
+		}	
+		//monta	um objeto contato
 		Contato	contato	= new Contato();
 		contato.setNome(nome);
 		contato.setEndereco(endereco);
 		contato.setEmail(email);
 		contato.setDataNascimento(dataNascimento);
-		//	salva	o	contato
-		ContatoDao	dao	= new ContatoDao();
+		//salva o contato
+		ContatoDao dao = new ContatoDao();
 		dao.adiciona(contato);
-		//	imprime	o	nome	do	contato	que	foi	adicionado
+		// imprime o nome do contato que foi adicionado
 		out.println("<html>");
 		out.println("<body>");
-		out.println("Contato	"	+	contato.getNome()	+
-				"	adicionado	com	sucesso");
+		out.println("Contato " + contato.getNome() +
+				" adicionado com sucesso");
 		out.println("</body>");
 		out.println("</html>");
 	}
