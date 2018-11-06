@@ -14,7 +14,7 @@
 
 </head>
 <body>
-	<%@	page
+	<%@page
 		import="java.util.*,
 				br.com.agenda.jdbc.dao.*,
 				br.com.agenda.jdbc.modelo.*"%>
