@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@	taglib	uri="http://java.sun.com/jsp/jstl/fmt"	prefix="fmt" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,13 +14,12 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/custom.css" />
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
-<body>
-	<%@	page
-		import="java.util.*,
-				br.com.agenda.jdbc.dao.*,
-				br.com.agenda.jdbc.modelo.*"%>
+<body>	
+	
+	<!-- cria o DAO	-->
+	<jsp:useBean id="contatoDao" class="br.com.agenda.jdbc.dao.ContatoDao" />
 	<table class="table">
   		<thead>
     		<tr>
@@ -26,43 +28,26 @@
       			<th scope="col">Email</th>
       			<th scope="col">Endereço</th>
       			<th scope="col">Data de Nascimento</th>
+      			<th scope="col">Ações</th>
     		</tr>
-  		</thead>	
-		<%
-			ContatoDao dao = new ContatoDao();
-			List<Contato> contatos = dao.getLista();
-			for (Contato contato : contatos) {
-		%>
-		<tbody>		
-			<tr>
-				<td><%=contato.getId()%></td>
-				<td><%=contato.getNome()%></td>
-				<td><%=contato.getEmail()%></td>
-				<td><%=contato.getEndereco()%></td>
-				<td><%=contato.getDataNascimento().getTime()%></td>
-			</tr>
-		<%
-			}
-		%>
-		</tbody>
-	</table>
-	
-	
-	
-	
-	
-	<!-- cria o DAO	-->
-	<jsp:useBean id="contatoDao" class="br.com.agenda.jdbc.dao.ContatoDao" />
-	<table>
+  		</thead>
+  		<tbody>	
 		<!-- percorre contatos montando	as linhas da tabela	-->
-		<c:forEach var="contato" items="${dao.lista}">
+		<c:forEach var="contato" items="${contatoDao.lista}">
 			<tr>
+				<td>${contato.id}</td>
 				<td>${contato.nome}</td>
 				<td>${contato.email}</td>
 				<td>${contato.endereco}</td>
-				<td>${contato.dataNascimento.time}</td>
+				<td><fmt:formatDate value="${contato.dataNascimento.time}" pattern="dd/MM/yyyy" /></td>
+				<td>
+					<a class="btn btn-sm btn-default" href="RemoveContato?id=${contato.id}" role="button" data-toggle="tooltip" title="Remover">
+						<i class="fa fa-trash text-danger"></i>
+					</a>
+				</td>
 			</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 	
 	

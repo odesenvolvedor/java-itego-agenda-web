@@ -18,95 +18,75 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.agenda.jdbc.dao.ContatoDao;
 import br.com.agenda.jdbc.modelo.Contato;
 
-/**
- * Servlet implementation class AdicionaContato
- */
 @WebServlet("/AdicionaContato")
 public class AdicionaContato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
     public AdicionaContato() {
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 	}
 
-	/**
-	 * @see Servlet#destroy()
-	 */
 	public void destroy() {
 		super.destroy();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 	
 	protected void service(HttpServletRequest request,
 			HttpServletResponse	response)
 					throws	IOException, ServletException	{
-		//busca	o writer
+
 		PrintWriter	out	= response.getWriter();
 		
-		//	buscando os	parâmetros	no	request
+		// buscando os parâmetros no request
 		String	nome		= request.getParameter("nome");
 		String	endereco	= request.getParameter("endereco");
 		String	email		= request.getParameter("email");
 		String	dataEmTexto	= request.getParameter("dataNascimento");
 		
-		System.out.println(dataEmTexto);
-		
 		Calendar dataNascimento	= null;
 		
-		//	fazendo	a conversão da data
+		// fazendo a conversão da data
 		try	{
-			Date date 		= new	SimpleDateFormat("yyyy-MM-dd").parse(dataEmTexto);
-			System.out.println(date);
+			Date date = new	SimpleDateFormat("yyyy-MM-dd").parse(dataEmTexto);
+
 			dataNascimento 	= Calendar.getInstance();
 			
 			dataNascimento.setTime(date);
 			
 		} catch	(ParseException	e)	{
 			out.println("Erro de conversão da data");
-			return;	//para a execução do	método
+			return;
 		}
 		
-		//monta	um	objeto	contato
+		//monta	um objeto contato
 		Contato	contato	= new Contato();
 		contato.setNome(nome);
 		contato.setEndereco(endereco);
 		contato.setEmail(email);
 		contato.setDataNascimento(dataNascimento);
-		//	salva	o	contato
-		ContatoDao	dao	= new ContatoDao();
+		
+		//	salva o contato
+		ContatoDao dao = new ContatoDao();
 		dao.adiciona(contato);
-		//	imprime	o	nome	do	contato	que	foi	adicionado
+		
+		//	imprime	o nome do contato que foi adicionado
 		out.println("<html>");
 		out.println("<body>");
-		out.println("Contato	"	+	contato.getNome()	+
-				"	adicionado	com	sucesso");
+		out.println("Contato " + contato.getNome()	+
+				" adicionado com	sucesso");
+		out.println("<a class='btn btn-sm btn-default' href='/' role='button'></a>");
 		out.println("</body>");
-		out.println("</html>");
+		out.println("</html>");		
 	}
 	
 
