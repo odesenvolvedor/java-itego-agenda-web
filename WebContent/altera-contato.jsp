@@ -1,12 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>Desenvolvimento WEB II - Agenda em Java</title>
+<title>Desenvolvimento WEB II - Alterar Contato</title>
 
 <!-- importando Bootstrap CSS -->
 <link rel="stylesheet"
@@ -23,7 +25,7 @@
 				<div class="card-header">Agenda</div>
 				<div class="card-body">
 					<h5 class="card-title">Cadastro de contato</h5>
-					<form action="mvc?logica=ContatoLogica&acao=adiciona" method="POST">
+					<form action="AdicionaContato" method="POST">
 						<div class="form-group">
 							<label for="nome">Nome</label> <input type="text"
 								class="form-control" id="nome" name="nome"

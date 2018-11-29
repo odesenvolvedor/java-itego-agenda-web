@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +18,7 @@ import br.com.agenda.jdbc.dao.ContatoDao;
 import br.com.agenda.jdbc.modelo.Contato;
 
 @WebServlet("/AdicionaContato")
+
 public class AdicionaContato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,7 +47,6 @@ public class AdicionaContato extends HttpServlet {
 
 		PrintWriter	out	= response.getWriter();
 		
-		// buscando os parâmetros no request
 		String	nome		= request.getParameter("nome");
 		String	endereco	= request.getParameter("endereco");
 		String	email		= request.getParameter("email");
@@ -55,7 +54,7 @@ public class AdicionaContato extends HttpServlet {
 		
 		Calendar dataNascimento	= null;
 		
-		// fazendo a conversão da data
+
 		try	{
 			Date date = new	SimpleDateFormat("yyyy-MM-dd").parse(dataEmTexto);
 
@@ -68,18 +67,15 @@ public class AdicionaContato extends HttpServlet {
 			return;
 		}
 		
-		//monta	um objeto contato
 		Contato	contato	= new Contato();
 		contato.setNome(nome);
 		contato.setEndereco(endereco);
 		contato.setEmail(email);
 		contato.setDataNascimento(dataNascimento);
 		
-		//	salva o contato
 		ContatoDao dao = new ContatoDao();
 		dao.adiciona(contato);
 		
-		//	imprime	o nome do contato que foi adicionado
 		out.println("<html>");
 		out.println("<body>");
 		out.println("Contato " + contato.getNome()	+

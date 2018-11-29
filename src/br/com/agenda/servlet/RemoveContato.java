@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.agenda.jdbc.dao.ContatoDao;
+import br.com.agenda.jdbc.modelo.Contato;
+
 @WebServlet("/RemoveContato")
 
 public class RemoveContato extends HttpServlet {
@@ -43,14 +46,19 @@ public class RemoveContato extends HttpServlet {
 		PrintWriter	out	= response.getWriter();
 		
 		// buscando os parâmetros no request
-		String id = request.getParameter("id");
+		Long id = new Long(request.getParameter("id"));
 		
-		System.out.println(id);
+        Contato contato = new Contato();
+        contato.setId(id);
+        
+        ContatoDao contatoDao = new ContatoDao();
+        
+        contatoDao.remove(contato);
 		
 		out.println("<html>");
 		out.println("<body>");
 		out.println("Contato revomido com sucesso");
-		out.println("<a class='btn btn-sm btn-default' href='lista-contatos.jsp' role='button'></a>");
+		out.println("<a class='btn btn-sm btn-default' href='lista-contatos.jsp' role='button'>Voltar</a>");
 		out.println("</body>");
 		out.println("</html>");		
 		
