@@ -78,6 +78,9 @@
 				<td>${contato.endereco}</td>
 				<td><fmt:formatDate value="${contato.dataNascimento.time}" pattern="dd/MM/yyyy" /></td>
 				<td>
+					<a class="btn btn-sm btn-default" href="mvc?logica=ContatoLogica&id=${contato.id}&acao=altera" role="button" data-toggle="tooltip" title="Alterar">
+						<i class="fa fa-edit text-warning"></i>
+					</a>				
 					<a class="btn btn-sm btn-default" href="mvc?logica=ContatoLogica&id=${contato.id}&acao=remove" role="button" data-toggle="tooltip" title="Remover">
 						<i class="fa fa-trash text-danger"></i>
 					</a>

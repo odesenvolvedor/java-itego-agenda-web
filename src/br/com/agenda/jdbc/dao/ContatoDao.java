@@ -92,13 +92,43 @@ public class ContatoDao {
                 contato.setDataNascimento(data);
 
                 // adicionando o objeto à lista
-                contatos.add(contato);
-                System.out.println(contato.getNome());
+                contatos.add(contato);                
             }
             rs.close();
             stmt.close();         
             
             return contatos;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public Contato buscaContato(Long id)
+    {
+        try {
+            Contato contato = new Contato();
+            PreparedStatement stmt = this.connection.prepareStatement("select * from contatos where id=?");
+            stmt.setLong(1, contato.getId());
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                contato.setId(rs.getLong("id"));
+                contato.setNome(rs.getString("nome"));
+                contato.setEmail(rs.getString("email"));
+                contato.setEndereco(rs.getString("endereco"));
+
+                Calendar data = Calendar.getInstance();
+                data.setTime(rs.getDate("dataNascimento"));
+                contato.setDataNascimento(data);
+
+            }            
+            rs.close();
+            stmt.close();         
+            
+            System.out.println(contato.getNome());
+            
+            return contato;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

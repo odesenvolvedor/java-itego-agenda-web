@@ -8,16 +8,10 @@ import br.com.agenda.mvc.logica.Logica;
 public class PrimeiraLogica implements Logica{
 
 	@Override
-	public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public String lista(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		System.out.println("Executando a logica...");
 		System.out.println("Retornando o nome da página	JSP...");
 		return "primeira-logica.jsp";		
-	}
-
-	@Override
-	public String lista(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
